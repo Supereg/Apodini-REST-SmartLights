@@ -9,10 +9,6 @@ import ApodiniDatabase
 import FluentKit
 import NIO
 
-// TODO Fix the following stuff in Apodini
-//   - `Content` should also require `Decodable` not just `Encodable`
-//   - resolver insertion order ("owner" reference)
-
 
 public struct SmartLightsWebService: WebService {
     public init() {}

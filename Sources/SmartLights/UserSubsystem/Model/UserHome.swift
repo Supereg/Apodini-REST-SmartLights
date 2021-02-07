@@ -27,10 +27,9 @@ struct UserHome: Content, Identifiable, WithRelationships {
 
     static var relationships: Relationships {
         Inherits<Home>() // as `UserHome` conforms to identifiable, it automatically uses \.id
-        References<User>(as: "user", identifiedBy: \.userId) // TODO this is overwritten, adjust Apodini
 
-        // TODO the path parameter resolvers overwrites the property (meaning the thing is wrong)
-        //   changing the order of insertion should fix that (IMPORTANT fix for the presentation)
+        // TODO currently overwritten by the "owner" reference. See https://github.com/Apodini/Apodini/issues/223 point 9.
+        References<User>(as: "user", identifiedBy: \.userId)
         References<User>(as: "owner", identifiedBy: \.ownerId)
     }
 

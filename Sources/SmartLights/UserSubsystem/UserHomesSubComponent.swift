@@ -15,10 +15,13 @@ struct UserHomesSubComponent: Component {
 
     var content: some Component {
         Group("homes") {
-            UserHomeListHandler(userId: $userId) // TODO members relationship
+            UserHomeListHandler(userId: $userId)
                 .relationship(name: "user", to: User.self)
+                .relationship(to: HomeComponent.membersRelationship)
+                .relationship(to: HomeComponent.devicesRelationship)
 
-            HomeCreationHandler(userId: $userId) // TODO self links (like for the user registration Handler)
+            // TODO self link should ideally point to /homes/{homeId}. https://github.com/Apodini/Apodini/issues/223 point 15.
+            HomeCreationHandler(userId: $userId)
                 .operation(.create)
 
             Group($homeId.relationship(name: "home")) {
@@ -31,7 +34,6 @@ struct UserHomesSubComponent: Component {
 
                 UpdatePrimaryHomeHandler(userId: $userId)
                     .operation(.update)
-                // TODO Relationship could have multiple destinations?
             }
         }
     }

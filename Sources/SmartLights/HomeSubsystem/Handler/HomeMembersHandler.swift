@@ -17,7 +17,6 @@ struct HomeMembersHandler: Handler {
     @Environment(\.database)
     var database: Database
 
-    // TODO maybe also list the owner
     func handle() -> EventLoopFuture<[Member]> {
         HomeModel
             .query(on: database)

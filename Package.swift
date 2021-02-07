@@ -12,7 +12,7 @@ let package = Package(
         .executable(name: "SmartLightsServer", targets: ["SmartLightsServer"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .branch("develop")),
+        .package(url: "https://github.com/Apodini/Apodini.git", .branch("feature/relationship-adjustments")),
         .package(name: "SemVer", url: "https://github.com/RougeWare/Swift-SemVer.git", from: "2.0.0")
     ],
     targets: [

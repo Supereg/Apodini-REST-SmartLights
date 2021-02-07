@@ -15,7 +15,8 @@ struct UserComponent: Component {
 
     var content: some Component {
         Group("user".relationship(name: "user")) {
-            UserRegistrationHandler() // TODO self link doesn't point to read
+            // TODO self link should ideally point to /user/{userId}. https://github.com/Apodini/Apodini/issues/223 point 15.
+            UserRegistrationHandler()
                 .operation(.create)
 
             Group($userId.relationship(name: "user")) {

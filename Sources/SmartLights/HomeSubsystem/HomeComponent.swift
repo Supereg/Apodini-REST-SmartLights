@@ -9,6 +9,9 @@ struct HomeComponent: Component {
     @PathParameter(identifying: Home.self)
     var homeId: Home.ID
 
+    static var membersRelationship = Relationship(name: "members")
+    static var devicesRelationship = Relationship(name: "devices")
+
     var content: some Component {
         Group("home".relationship(name: "home"), $homeId) {
             HomeHandler(homeId: $homeId)
@@ -21,6 +24,7 @@ struct HomeComponent: Component {
             Group("members") {
                 HomeMembersHandler(homeId: $homeId)
                     .relationship(name: "user", to: User.self)
+                    .destination(of: Self.membersRelationship)
 
                 HomeMembersAddHandler(homeId: $homeId)
                     .operation(.update)
@@ -31,6 +35,7 @@ struct HomeComponent: Component {
             Group("devices") {
                 HomeDevicesHandler(homeId: $homeId)
                     .relationship(name: "device", to: Device.self)
+                    .destination(of: Self.devicesRelationship)
             }
         }
     }
