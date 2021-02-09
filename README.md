@@ -11,6 +11,8 @@ For more information on HATEOAS you might want to checkout
 
 The project serves a rudimentary cloud based smart Lights IOT service.
 
+Below is a simplified version of the SmartLights project:
+
 ![SmartLights UML Diagram](./assets/UML-Diagram.png)
 
 Included is a exemplary SQLite database in order to experiment with the web service.
