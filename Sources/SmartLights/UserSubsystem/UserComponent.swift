@@ -14,7 +14,7 @@ struct UserComponent: Component {
     let primaryHome = Relationship(name: "homes_primary")
 
     var content: some Component {
-        Group("user".relationship(name: "user")) {
+        Group("user") {
             // TODO self link should ideally point to /user/{userId}. https://github.com/Apodini/Apodini/issues/223 point 15.
             UserRegistrationHandler()
                 .operation(.create)

@@ -11,7 +11,7 @@ struct DeviceComponent: Component {
     var deviceId: Device.ID
 
     var content: some Component {
-        Group("device".relationship(name: "device")) {
+        Group("device") {
             DeviceSetupHandler()
                 .operation(.create)
 

@@ -23,8 +23,8 @@
         "package": "Apodini",
         "repositoryURL": "https://github.com/Apodini/Apodini.git",
         "state": {
-          "branch": "feature/relationship-adjustments",
-          "revision": "7cd7af0ef5ba83cec44874ca8b9f7aed34ba249a",
+          "branch": "fix/rest-exporter-adjustments",
+          "revision": "38faef5193c667030a8b42b6dd4d795275cd609a",
           "version": null
         }
       },

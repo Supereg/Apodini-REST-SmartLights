@@ -14,7 +14,6 @@ final class HomeModel: Model {
     @Field(key: "name")
     var name: String
 
-    // The owner of the `HomeModel`, also included in the `members` property.
     @Parent(key: "owner_id")
     var owner: UserModel
 

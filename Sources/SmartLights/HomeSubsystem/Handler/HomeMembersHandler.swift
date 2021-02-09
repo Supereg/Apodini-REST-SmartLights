@@ -21,14 +21,16 @@ struct HomeMembersHandler: Handler {
         HomeModel
             .query(on: database)
             .filter(\._$id == homeId)
-            .field(\._$id)
+            .with(\.$owner)
             .with(\.$members)
             .first()
             .unwrap(orError: notFound)
-            .map { homeModel in
-                homeModel.members.map { userModel in
+            .map { (homeModel: HomeModel) in
+                var members = homeModel.members.map { userModel in
                     Member(from: userModel)
                 }
+                members.insert(Member(from: homeModel.owner), at: 0)
+                return members
             }
     }
 }
