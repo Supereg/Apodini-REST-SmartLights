@@ -23,4 +23,8 @@ struct UserRegistrationHandler: Handler {
                 User(from: user)
             }
     }
+
+    var metadata: Metadata {
+        Operation(.create)
+    }
 }

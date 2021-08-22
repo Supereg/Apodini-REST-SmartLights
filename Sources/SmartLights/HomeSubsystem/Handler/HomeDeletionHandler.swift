@@ -7,7 +7,7 @@ import Apodini
 import FluentKit
 
 struct HomeDeletionHandler: Handler {
-    @Parameter
+    @Binding
     var homeId: Home.ID
 
     @Environment(\.database)
@@ -23,5 +23,9 @@ struct HomeDeletionHandler: Handler {
             .map {
                 DeletedHome(id: homeId)
             }
+    }
+
+    var metadata: Metadata {
+        Operation(.delete)
     }
 }

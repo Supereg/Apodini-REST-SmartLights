@@ -13,7 +13,7 @@ struct HomeMembersAddHandler: Handler {
     @Throws(.notFound, reason: "Member was not found")
     var userNotFound: ApodiniError
 
-    @Parameter
+    @Binding
     var homeId: Home.ID
     @Parameter
     var addedMember: MemberSelection
@@ -40,5 +40,9 @@ struct HomeMembersAddHandler: Handler {
                             }
                     }
             }
+    }
+
+    var metadata: Metadata {
+        Operation(.update)
     }
 }

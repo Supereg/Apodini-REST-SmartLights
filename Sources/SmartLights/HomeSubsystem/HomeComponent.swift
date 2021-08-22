@@ -17,7 +17,6 @@ struct HomeComponent: Component {
             HomeHandler(homeId: $homeId)
 
             HomeDeletionHandler(homeId: $homeId)
-                .operation(.delete)
 
             // Feature: add a handler to rename a Home
 
@@ -27,9 +26,7 @@ struct HomeComponent: Component {
                     .destination(of: Self.membersRelationship)
 
                 HomeMembersAddHandler(homeId: $homeId)
-                    .operation(.update)
                 HomeMembersRemoveHandler(homeId: $homeId)
-                    .operation(.delete)
             }
 
             Group("devices") {

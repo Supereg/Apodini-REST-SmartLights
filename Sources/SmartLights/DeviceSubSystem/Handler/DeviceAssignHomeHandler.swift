@@ -13,7 +13,7 @@ struct DeviceAssignHomeHandler: Handler {
     @Throws(.notFound, reason: "Home not found")
     var homeNotFound: ApodiniError
 
-    @Parameter
+    @Binding
     var deviceId: Device.ID
     @Parameter
     var homeAssignment: DeviceHomeAssignment
@@ -39,5 +39,9 @@ struct DeviceAssignHomeHandler: Handler {
                             }
                     }
             }
+    }
+
+    var metadata: Metadata {
+        Operation(.update)
     }
 }

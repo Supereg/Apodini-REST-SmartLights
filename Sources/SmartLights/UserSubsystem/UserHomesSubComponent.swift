@@ -22,7 +22,6 @@ struct UserHomesSubComponent: Component {
 
             // TODO self link should ideally point to /homes/{homeId}. https://github.com/Apodini/Apodini/issues/223 point 15.
             HomeCreationHandler(userId: $userId)
-                .operation(.create)
 
             Group($homeId.relationship(name: "home")) {
                 UserHomeHandler(userId: $userId, homeId: $homeId)
@@ -33,7 +32,6 @@ struct UserHomesSubComponent: Component {
                     .destination(of: primaryHome)
 
                 UpdatePrimaryHomeHandler(userId: $userId)
-                    .operation(.update)
             }
         }
     }

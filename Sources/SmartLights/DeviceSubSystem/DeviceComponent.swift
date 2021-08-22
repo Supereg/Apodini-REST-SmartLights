@@ -13,7 +13,6 @@ struct DeviceComponent: Component {
     var content: some Component {
         Group("device") {
             DeviceSetupHandler()
-                .operation(.create)
 
             Group {
                 $deviceId
@@ -22,7 +21,6 @@ struct DeviceComponent: Component {
                 DeviceHandler(deviceId: $deviceId)
 
                 DeviceAssignHomeHandler(deviceId: $deviceId)
-                    .operation(.update)
             }
         }
     }

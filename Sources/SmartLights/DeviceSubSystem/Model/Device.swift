@@ -6,7 +6,7 @@ import Foundation
 import Apodini
 import SemVer
 
-struct Device: Content, Identifiable, WithRelationships {
+struct Device: Content, Identifiable {
     let id: Int
     let homeId: Home.ID?
 
@@ -25,7 +25,7 @@ struct Device: Content, Identifiable, WithRelationships {
         case state
     }
 
-    static var relationships: Relationships {
+    static var metadata: Metadata {
         References<Home>(as: "home", identifiedBy: \.homeId)
     }
 }

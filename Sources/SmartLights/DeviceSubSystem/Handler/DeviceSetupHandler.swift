@@ -39,4 +39,8 @@ struct DeviceSetupHandler: Handler {
                     }
             }
     }
+
+    var metadata: Metadata {
+        Operation(.create)
+    }
 }

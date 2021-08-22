@@ -10,6 +10,7 @@ on:
 
 jobs:
   macos:
+    if: ${{ false }}  # disabled for now, as we require macOS 12 and the latest Xcode Beta
     name: macOS ${{ matrix.configuration }}
 
     runs-on: macos-latest
@@ -48,29 +49,33 @@ jobs:
     name: Linux ${{ matrix.linux }} ${{ matrix.configuration }}
 
     container:
-      image: swift:${{ matrix.linux }}
+      image: swiftlang/swift:nightly-5.5-${{ matrix.linux }}
 
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        linux: [bionic, xenial, focal, amazonlinux2, centos8]
+        linux: [bionic, focal, amazonlinux2, centos8]
         configuration: [debug, release]
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Install libsqlite3
       if: ${{ !(startsWith( matrix.linux, 'centos' ) || startsWith( matrix.linux, 'amazonlinux' )) }}
       run: apt-get update && apt-get install -y --no-install-recommends libsqlite3-dev
     - name: Install libsqlite3
-      if: ${{ startsWith( matrix.linux, 'centos' ) || startsWith( matrix.linux, 'amazonlinux' ) }}
+      if: startsWith( matrix.linux, 'amazonlinux' )
       run: yum update -y && yum install -y sqlite-devel
+    - name: Install libsqlite3
+      if: startsWith( matrix.linux, 'centos' )
+      run: yum update -y --nobest && yum install -y sqlite-devel
 
     - uses: actions/cache@v2
       with:
         path: .build
-        key: ${{ runner.os }}-${{matrix.linux}}-${{ matrix.configuration }}-spm-cache-${{ hashFiles('Package.resolved') }}
+        key: ${{ runner.os }}-${{matrix.linux}}-${{ matrix.configuration }}-spm-cache-5.5-${{ hashFiles('Package.resolved') }}
     - name: Check Swift version
       run: swift --version
 

@@ -10,7 +10,7 @@ struct DeviceHandler: Handler {
     @Throws(.notFound, reason: "Device not found")
     var notFound: ApodiniError
 
-    @Parameter
+    @Binding
     var deviceId: Device.ID
 
     @Environment(\.database)

@@ -5,7 +5,7 @@
 import Foundation
 import Apodini
 
-struct Home: Content, Identifiable, WithRelationships {
+struct Home: Content, Identifiable {
     let id: Int
 
     /// The owner of the Home
@@ -27,7 +27,7 @@ struct Home: Content, Identifiable, WithRelationships {
         case country
     }
 
-    static var relationships: Relationships {
+    static var metadata: Metadata {
         References<User>(as: "owner", identifiedBy: \.owner)
     }
 }

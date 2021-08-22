@@ -5,11 +5,11 @@
 import Foundation
 import Apodini
 
-struct RemovedMember: Content, Codable, WithRelationships {
+struct RemovedMember: Content, Codable {
     let userId: User.ID
     var removed = true
 
-    static var relationships: Relationships {
+    static var metadata: Metadata {
         Inherits<User>(identifiedBy: \.userId)
     }
 }

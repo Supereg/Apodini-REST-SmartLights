@@ -13,7 +13,7 @@ struct HomeMembersRemoveHandler: Handler {
     @Throws(.notFound, reason: "Member was not found")
     var userNotFound: ApodiniError
 
-    @Parameter
+    @Binding
     var homeId: Home.ID
     @Parameter
     var removedMember: MemberSelection
@@ -37,5 +37,9 @@ struct HomeMembersRemoveHandler: Handler {
                             }
                     }
             }
+    }
+
+    var metadata: Metadata {
+        Operation(.delete)
     }
 }

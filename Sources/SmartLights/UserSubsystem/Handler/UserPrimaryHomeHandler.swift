@@ -13,7 +13,7 @@ struct UserPrimaryHomeHandler: Handler {
     @Throws(.notFound, reason: "User has no primary home set")
     var noPrimaryHome: ApodiniError
 
-    @Parameter
+    @Binding
     var userId: User.ID
 
     @Environment(\.database)

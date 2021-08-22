@@ -11,7 +11,7 @@ struct UpdatePrimaryHomeHandler: Handler {
     @Throws(.notFound, reason: "Home not found")
     var homeNotFound: ApodiniError
 
-    @Parameter
+    @Binding
     var userId: User.ID
     @Parameter
     var primaryHomeUpdate: PrimaryHomeUpdate
@@ -34,5 +34,9 @@ struct UpdatePrimaryHomeHandler: Handler {
                         UserHome(user: userId, from: homeModel)
                     }
             }
+    }
+
+    var metadata: Metadata {
+        Operation(.update)
     }
 }

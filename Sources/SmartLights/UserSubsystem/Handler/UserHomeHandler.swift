@@ -11,9 +11,9 @@ struct UserHomeHandler: Handler {
     @Throws(.notFound, reason: "UserHome not found")
     var notFound: ApodiniError
 
-    @Parameter
+    @Binding
     var userId: User.ID
-    @Parameter
+    @Binding
     var homeId: Home.ID
 
     @Environment(\.database)

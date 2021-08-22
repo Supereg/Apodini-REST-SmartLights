@@ -5,14 +5,14 @@
 import Foundation
 import Apodini
 
-struct Member: Content, Identifiable, WithRelationships {
+struct Member: Content, Identifiable {
     let id: User.ID
 
     let name: String
     let lastname: String
     let email: String
 
-    static var relationships: Relationships {
+    static var metadata: Metadata {
         Inherits<User>()
     }
 }

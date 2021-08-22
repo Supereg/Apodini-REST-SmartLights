@@ -6,7 +6,7 @@ import Foundation
 import Apodini
 
 /// Returns `Home` information with the context of a given `User`
-struct UserHome: Content, Identifiable, WithRelationships {
+struct UserHome: Content, Identifiable {
     /// The `Home` id
     let id: Int
     /// The `User` id for which this `Home` is returned.
@@ -25,7 +25,7 @@ struct UserHome: Content, Identifiable, WithRelationships {
         case name
     }
 
-    static var relationships: Relationships {
+    static var metadata: Metadata {
         Inherits<Home>() // as `UserHome` conforms to identifiable, it automatically uses \.id
 
         // TODO currently overwritten by the "owner" reference. See https://github.com/Apodini/Apodini/issues/223 point 9.

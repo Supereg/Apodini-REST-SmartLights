@@ -10,7 +10,7 @@ struct HomeCreationHandler: Handler {
     @Throws(.notFound, reason: "User not found")
     var userNotFound: ApodiniError
 
-    @Parameter
+    @Binding
     var userId: User.ID
     @Parameter
     var createdHome: HomeCreation
@@ -32,5 +32,9 @@ struct HomeCreationHandler: Handler {
                         UserHome(user: userId, from: home)
                     }
             }
+    }
+
+    var metadata: Metadata {
+        Operation(.create)
     }
 }

@@ -5,7 +5,7 @@
 import Foundation
 import Apodini
 import NIO
-import Fluent
+import FluentKit
 
 struct UserHomeListHandler: Handler {
     @Throws(.notFound, reason: "User not found")
@@ -13,7 +13,7 @@ struct UserHomeListHandler: Handler {
     @Throws(.badInput, reason: "Boolean flag `owner` was given in an illegal format")
     var illegalOwnerFlag: ApodiniError
 
-    @Parameter
+    @Binding
     var userId: User.ID
     @Parameter
     var owner: String?
