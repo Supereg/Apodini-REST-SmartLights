@@ -11,9 +11,7 @@ let package = Package(
         .executable(name: "SmartLights", targets: ["SmartLights"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.4.0")),
-        // intermediate fix. 2.32.0 introduces a breaking change Apodini hasn't accomodated for.
-        .package(url: "https://github.com/apple/swift-nio.git", .exact("2.31.1")),
+        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.5.0")),
         .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.1.0"),
         .package(name: "SemVer", url: "https://github.com/RougeWare/Swift-SemVer.git", from: "2.0.0")
     ],
